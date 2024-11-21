@@ -15,6 +15,7 @@ public class PlayerHealth : LivingEntity {
     private PlayerMovement playerMovement; // 플레이어 움직임 컴포넌트
     private PlayerShooter playerShooter; // 플레이어 슈터 컴포넌트
 
+   
     private void Awake() {
         // 사용할 컴포넌트를 가져오기
         playerAnimator = GetComponent<Animator>();
@@ -55,8 +56,7 @@ public class PlayerHealth : LivingEntity {
     // 데미지 처리
     public override void OnDamage(float damage, Vector3 hitPoint, Vector3 hitDirection) {
         // LivingEntity의 OnDamage() 실행(데미지 적용)
-        base.OnDamage(damage, hitPoint, hitDirection);
-
+        
         if (!dead)
         {
             playerAudioPlayer.PlayOneShot(hitClip);
@@ -74,6 +74,7 @@ public class PlayerHealth : LivingEntity {
         // LivingEntity의 Die() 실행(사망 적용)
         base.Die();
 
+        
         // 체력 슬라이더 비활성화
         healthSlider.gameObject.SetActive(false);
 
